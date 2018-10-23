@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function fn(){
+        // return 有两个作用，一个是打断函数的执行，另一个是返回结果给外界
+        // 不写 return 时默认返回undefined
+        return ;
+        console.log(111);
+    }  
+    var fb = fn();
+
+    var ary = [1,2,3,4];
+    // ary[4] = 5;
+    var n = ary.push(5,6,7,8,9);// 给数组的末尾添加项
+    // 返回值是改编后的数组长度
+    console.log(n,ary);
+    var item = ary.pop();// 删除数组最后一项
+    console.log(item,ary);
+    var m = ary.unshift(-1,0);// 给数组的首位添加项
+    // 返回值是改编后的数组长度
+    console.log(m,ary);
+    var item2 = ary.shift();// 删除数组的首位
+    console.log(item2,ary);
+
+    // sort 数组排序
+    var ary2 = [123,654,852,456];
+    var ary3 = ary2.sort(function(a,b){
+        return a-b;
+        // 返回a-b 是升序
+        // 返回b-a 是降序
+    });// sort的返回结果是排好序之后的数组
+    console.log(ary2);
+    console.log(ary3 == ary2);// true
+
+    console.log(ary.reverse());// ary.reverse() 数组的反转：返回结果跟原数组是一个地址
+
+    // forEach 用来循环数组的
+    ary4 = [10,20,30,40];
+    console.log(ary4.forEach(function(item,index){}));
+    // item 是循环的数组的每一项，index 是循环的每一项的索引
+    
+    // filter
+    var ary5 = ary4.filter(function(item,index){
+        return item > 20;
+    });
+    console.log(ary5);
+    console.log(ary5 == ary4);// false
+
+    // var ary01 = [];
+    // var ary02 = [];
+    // var ary03 = ary02;
+    // console.log(ary01 == ary02);// false.
+
+    // [].__proto__ 查询数组的方法
+</script>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .a{
+            width: 100px;
+            height: 100px;
+            background:-webkit-linear-gradient(left top,rgb(168, 168, 235),rgb(235, 163, 163),rgb(135, 192, 135));
+            border-radius: 50px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 20px;
+            box-shadow: 3px 3px 3px 3px #000;  
+        }
+
+        .b{
+            width: 100px;
+            height: 100px;
+            background: #cccccc;
+            border: 10px dashed #333;
+            padding: 20px;
+            margin: 20px;
+            box-sizing: border-box;
+        }
+        .c{
+            width: 100px;
+            height: 100px;
+            background: #cccccc;
+            border: 10px dashed #333;
+            padding: 20px;
+            margin: 20px;
+            box-sizing: content-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="a">石职软院</div>
+    <div class="b">石职软院</div>
+    <div class="c">石职软院</div>
+
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+</body>
+</html>
+<script>
+    var obj = {name:'a',age:9};
+    for(var k in obj){
+        // k 对象中的属性名
+        console.log(k);
+        console.log(obj.k);//obj['k']   undefined
+        console.log(obj[k]);
+    }
+
+    var str = '123.1a';
+    console.log(Number(str));
+    console.log(parseInt(str));
+
+    function sum(a,b,c){
+        var s = 0;
+        for(var i = 0;i < arguments.length;i++){
+            // arguments 实参集合
+            console.log('arguments[' + i + '] = ' + arguments[i]);
+            s =  s + arguments[i];
+            console.log('s = ' + s);
+        }
+        return s;
+    }
+    var q = sum(1,2,3,4,5);
+    console.log('q = ' + q);
+
+    // 布尔数据类型中，有5个是false，其他的全是true
+    // 0,NaN,'',null,undefined ----> false(5个)
+    var a = 1 || 2;
+    var b = 1 && 2;
+    var c = 0 || sum(1,2,3);
+    console.log(a,b,c);
+    //对于&&来说：前边成立给后边，前边不成立给前边
+    //对于||来说：前边成立给前边，前边不成了给后边
+
+    // ! 代表取反，先把要取反的数据类型转换成布尔类型，然后再去取反
+    // !! 代表取反后再取反，这个操作的效果等同于 Boolean()转化
+    // == 相对比较，会把两边的数据类型转换为同一类型
+    // === 绝对比较，先看两边是不是同一个数据类型，若不是，则直接就是false，若是，则再去比较值是否相等
+    console.log('0' == 0);// 把两边都转换为数字再去比较
+    console.log([] == false);// 先把引用数据类型转换为字符串，再把字符串转成数字，然后再去比较
+    console.log(![] == false);
+
+    /* JS中的数据类型分为两大类
+       基本数据类型：string,number,boolean,null,undefined
+       引用数据类型：[],{},function,Data,Math,正则,……
+       基本数据类型操作的都是一个值；引用数据类型操作的都是一个地址
+    */
+    var name = 'aa',age = 1;
+    console.log('name = ' + name + ',age = ' + age);
+    var str = `name = ${name},
+            age = ${age}`;
+    console.log(str);
+    var str2 = `123\`asd`;// 若想用单引号包含单引号，我们需要用‘\’把字符串中的单引号转义
+    console.log(str2);
+
+    // number类型 NaN
+    NaN == NaN;// false 结果永不相等
+    Number();
+    parseInt();
+    parseFloat();
+    isNaN();// 判断参数是否是NaN，若是则返回true，否则返回false
+    null == undefined;//true
+    null === undefined;//false
+    typeof(1);// 查看数据类型，返回结果是字符串
+
+    var obj = {name:'z',age:1};
+    console.log(obj.name);
+    // 对象中获取属性值的两种方式：一种是打点，另一种是[]，中括号的这种方式一般适用于属性值是通过变量获取的情况
+
+    for(var i = 0;i < 10;i++){
+        switch(i%4){
+            case 1:
+            case 3:
+                i += 1;
+                break;
+            case 0:
+            case 2:
+                i += 2;
+                break;
+            default:
+                i += 4;
+        }
+    }
+    console.log(i);// 11
+    // i = 0 ; 0 < 10; ---> i+=2 --> 2 -->3
+    // i = 3 ; 3 < 10; ---> i+=1 --> 4 -->5
+    // i = 5 ; 5 < 10; ---> i+=1 --> 6 -->7
+    // i = 7 ; 7 < 10; ---> i+=1 --> 8 -->9
+    // i = 9 ; 9 < 10; ---> i+=1 --> 10 --> 11
+    // i =11 ; 11 < 10;结束循环
+
+    // 事件的循环绑定
+    var oBtns = document.getElementsByTagName('button');
+    console.log(oBtns);
+    for(var i = 0; i < oBtns.length ; i++){
+        oBtns[i].onclick = function () {
+            alert(this.innerHTML);
+        }
+    }
+</script>
