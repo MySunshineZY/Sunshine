@@ -14,15 +14,18 @@
 
 </html>
 <script>
-    function fn() {
-        i = 2;
-        return function (n) {
-            console.log(n * i++);// i++ 先运算后累加
-        }
+    // 剩余运算符
+    function sum(a1, ...ary) {
+        console.log(a1, ary);
     }
-    var f = fn();
-    f(3);// 6
-    fn()(4);// 8
-    // fn()(2);
-    f(2);// 6
+    sum(1, 2, 3, 4, 5);
+
+    function sum2(...ary) {
+        return eval(ary.join('+'));
+        // 通过 ... 把传进来的实参 都放到ary这个数组中
+        // 在用数组的 join 把数组的每一项用 + 拼接成字符串
+        // 再用 eval 把拼接好的字符串 转成 表达式计算
+    }
+    let a = sum2(1, 2, 3, 4, 5);
+    console.log(a);// 15
 </script>
