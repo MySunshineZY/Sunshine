@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作用域复习</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // console.log(a);// undefined
+    // if(false){
+    //     var a = 12;
+    // }
+
+    // function sum(a,b){
+    //     // 在私有作用域中：形参赋值先于变量提升
+    //     var a = 10;
+    //     return a + b;
+    // }
+    // var t = sum(1,2);
+    // console.log(t);// 12
+
+    /*
+     作用域：
+     全局作用域 ---> 全局变量
+     私有作用域（函数执行，形成私有作用域） ---> 私有变量（声明过的，形参）
+     块级作用域（用{}包起来的部分），只对let和const声明的变量起作用
+    */
+    // for(var i = 0;i < 4;i++){
+    //     var b = 132
+    //     let c = 123;
+    // }
+    // console.log(b);// 132
+    // console.log(c);// 报错
+
+    /*
+     let(const)和var的区别
+     1、let声明的变量不会挂到window下
+        console.log(q);// undefined
+        var q = 12;
+        console.log(w);// 报错
+        let w = 23;
+     2、let没有变量提升
+     3、let不能重复声明
+     4、let能识别块级作用域
+    */
+
+    // 上级作用域：
+    // 一个函数的执行：它的上级作用域跟这个函数在哪里执行没关系，只跟这个函数在哪里定义有关系，在哪个作用域定义的，它的上级作用域是谁
+    // 作用域链：
+    // 他是一个变量的查找机制：自己作用域没有时，就往上级找，直到找到这个变量，当找至全局作用时，仍未找到这个变量，这时就会报错
+    // var d = 100;
+    // function fn(){
+    //     var d = 45;
+    //     console.log(d);
+    //     return function(){
+    //         console.log(d,qqq);// qqq不存在，报错，not defined
+    //     }
+    // }
+    // let f = fn();
+    // f();
+
+    var n = 10;
+    function outer() {
+        var n = 15;
+        function inner(n) {
+            console.log(n)// 15
+            function center() {
+                n++;
+                console.log(n);// 16
+            }
+            center();
+        }
+        inner(n);
+    }
+    outer();
+
+    // let e = 10;
+    // function fn2(){
+    //     console.log(e);// 暂时性死区 // 报错
+    //     let e = 12;
+    // }
+    // fn2();
+    // let g = 10;
+    // function fn3(){
+    //     console.log(g);// 10
+    //     // let g = 12;
+    // }
+    // fn3();
+</script>

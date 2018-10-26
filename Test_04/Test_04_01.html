@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组2</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var ary = [1,2,3,4];
+    console.log(ary.join('a'));// join 该数组中的每一项以指定字符拼接，返回结果是个字符串
+
+    var str = '1+2+3+4+5+6+7';
+    console.log(str.split('+'));// split 把字符串以指定字符拆分成数组
+
+    // 数组求和
+    var ary = [10,20,30,40];
+    var t1 = t2 = 0;
+    for(var i = 0;i < ary.length;i++){
+        t1 += ary[i];
+    }
+    console.log('1.' + t1);
+    ary.forEach(function(item){
+        t2 += item;
+    });
+    console.log('2.' + t2);
+    var str2 = '1+2+3';
+    console.log(eval(str2));// evel 把字符串转换为JS表达式，然后进行运算
+    var ary = [23,10,20,30];
+    console.log(eval(ary.join('+')));
+
+    // 查出字符串中重复次数最多的字符，并求出重复次数
+    var str3 = 'qwerasdqqqqqq';
+    var obj = {};
+    for(var i = 0;i < str3.length;i++){
+        if(obj[str3[i]]){
+            // 若对象中存在该项，则证明之前已经给该项赋过值，直接进行++的操作即可
+            obj[str3[i]]++;
+        }else{
+            obj[str3[i]] = 1;
+        }
+    }
+    console.log(obj);
+    var max = 0;// 假设最大次数为0次
+    var maxStr = '';
+    for(var k in obj){
+        if(obj[k] > max){
+            max = obj[k];
+            maxStr = k;
+        }
+    }
+    console.log(maxStr + '：' + max);
+</script>
